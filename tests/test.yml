@@ -1,0 +1,11 @@
+---
+- hosts: test
+  roles:
+    - role: '../../.'
+      deb__backports: true
+      deb__updates: true
+      deb__ubuntu_multiverse: false
+      deb__clean_sources: distribution
+      set_apt_proxy: false
+      debian_repos_url: "http://deb.debian.org"
+      ubuntu_repos_url: "http://archive.ubuntu.com"

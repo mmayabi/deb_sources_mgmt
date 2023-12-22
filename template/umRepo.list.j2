@@ -1,0 +1,17 @@
+##  edit by Ansible  ##
+####  repos.um.ac.ir  ####
+{% if 'debian' in ansible_distribution %}
+#deb http://repos.um.ac.ir/debian {{ ansible_distribution_release }} main contrib non-free
+#deb http://repos.um.ac.ir/debian-security {{ ansible_distribution_release }}/updates main 
+
+{% elif 'ubuntu' in ansible_distribution %}
+{% if ansible_distribution_release in ["disco", "cosmic", "artful", "zesty", "yakkety"] %}
+#deb http://old-releases.repos.um.ac.ir/ubuntu {{ ansible_distribution_release }} main restricted universe
+#deb http://old-releases.repos.um.ac.ir/ubuntu {{ ansible_distribution_release }}-updates main restricted universe
+#deb http://old-releases.repos.um.ac.ir/ubuntu {{ ansible_distribution_release }}-security main restricted universe 
+{% else %}
+#deb http://repos.um.ac.ir/ubuntu {{ ansible_distribution_release }} main restricted universe
+#deb http://repos.um.ac.ir/ubuntu {{ ansible_distribution_release }}-updates main restricted universe
+#deb http://repos.um.ac.ir/ubuntu {{ ansible_distribution_release }}-security main restricted universe 
+{% endif %}
+{% endif %}

@@ -1,0 +1,4 @@
+---
+- name: "Retrieve new lists of packages"
+  ansible.builtin.apt:
+    update_cache: yes

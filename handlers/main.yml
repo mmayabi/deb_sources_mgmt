@@ -1,0 +1,4 @@
+---
+# handlers file for $ROLE
+- name: Update cache
+  ansible.builtin.include: update.yml

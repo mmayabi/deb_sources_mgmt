@@ -1,0 +1,40 @@
+##  edit by Ansible  ##
+{% if 'debian' in ansible_distribution %}
+#Main
+deb {{ debian_repos_url }}/debian {{ ansible_distribution_release }} main contrib non-free
+deb-src {{ debian_repos_url }}/debian {{ ansible_distribution_release }} main contrib non-free
+{% if deb__security %}
+#security:
+deb {{ debian_repos_url }}/debian-security {{ ansible_distribution_release }}/updates main
+deb-src {{ debian_repos_url }}/debian-security {{ ansible_distribution_release }}/updates main
+{% endif %}
+{% if deb__backports %}
+#backports:
+deb {{ debian_repos_url }}/debian {{ ansible_distribution_release }}-backports main contrib non-free
+deb-src {{ debian_repos_url }}/debian {{ ansible_distribution_release }}-backports main contrib non-free
+{% endif %}
+{% if deb__updates %}
+#updates:
+deb {{ debian_repos_url }}/debian {{ ansible_distribution_release }}-updates main contrib non-free
+deb-src {{ debian_repos_url }}/debian {{ ansible_distribution_release }}-updates main contrib non-free
+{% endif %}
+{% elif 'ubuntu' in ansible_distribution %}
+#Main
+deb {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }} main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+deb-src {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }} main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+{% if deb__security %}
+#security:
+deb {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }}-security main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+deb-src {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }}-security main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+{% endif %}
+{% if deb__backports %}
+#backports:
+deb {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }}-backports main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+deb-src {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }}-backports main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+{% endif %}
+{% if deb__updates %}
+#updates:
+deb {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }}-updates main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+deb-src {{ ubuntu_repos_url }}/ubuntu/ {{ ansible_distribution_release }}-updates main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}
+{% endif %}
+{% endif %}

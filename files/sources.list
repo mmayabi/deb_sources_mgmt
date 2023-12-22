@@ -1,0 +1,2 @@
+# Empty sources.list installed by ansible role
+# All packages repositories must be configured into /etc/apt/sources.list.d/

@@ -1,0 +1,16 @@
+---
+# defaults file for deb
+deb__distribution: "{{ ansible_distribution }}"
+deb__release: "{{ ansible_distribution_release }}"
+deb__security: true
+deb__backports: false
+deb__updates: false
+deb__ubuntu_universe: true
+deb__ubuntu_multiverse: true
+deb__clean_sources: false
+
+set_apt_proxy: false
+
+debian_repos_url: "http://deb.debian.org"
+ubuntu_repos_url: "http://archive.ubuntu.com"
+um_repos: true
